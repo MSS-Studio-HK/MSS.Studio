@@ -183,6 +183,31 @@
   background: rgba(255, 255, 255, 0.85);
   border-radius: 6px;
 }
+
+.card.coming-soon {
+  pointer-events: none;
+  cursor: default;
+}
+.card.coming-soon .card-inner {
+  filter: blur(4px);
+  opacity: 0.6;
+}
+.card .badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  font-style: italic;
+  transform: rotate(-3deg);  /* 少少斜 */
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  letter-spacing: 0.02em;
+  /* 唔好加 filter，就唔會霧化 */
+}
     
   </style>
 </head>
@@ -227,12 +252,10 @@
         </div>
       </a>
 <div class="card coming-soon">
-  <span class="coming-soon-label">Coming Soon</span>
-  <div class="card-img">...</div>
-  <div class="card-body">
-    <h2>beEXPO</h2>
-    <p class="card-desc">...</p>
-    <span class="btn">Enter site →</span>
+  <span class="badge">Coming Soon</span>
+  <div class="card-inner">
+    <div class="card-img">...</div>
+    <div class="card-body">...</div>
   </div>
 </div>
       <a href="#" class="card" aria-label="Enter beCreators">
