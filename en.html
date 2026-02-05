@@ -54,17 +54,18 @@
       font-weight: 400;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-    @media (min-width: 900px) {
-      .cards {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1rem;
-    grid-auto-rows: minmax(320px, auto);  /* 加呢行：卡最低 320px 高 */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
+  .card:nth-child(4) { grid-column: 1; }
+  .card:nth-child(5) { grid-column: 2; }
 }
 
     .card {
