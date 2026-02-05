@@ -97,34 +97,35 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
 
-    /* 只霧化卡嘅內容，唔霧化「Coming Soon」 */
-    .card.coming-soon .card-inner {
-      filter: blur(4px);
-      opacity: 0.65;
-    }
-
-    /* 「Coming Soon」橫跨成張卡、放高少少、白底、斜字、唔霧化 */
-.coming-soon-label {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 12%;           /* 放高少少 */
-  z-index: 5;
+/* 只霧化卡內容，唔霧化 .coming-soon-label */
+.card.coming-soon {
   pointer-events: none;
-  background: #fff;   /* 白底 */
-  padding: 0.5rem 1rem;
-  text-align: center;
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  cursor: default;
+  position: relative;
+}
+.card.coming-soon .card-inner {
+  filter: blur(4px);
+  opacity: 0.65;
 }
 
-      .coming-soon-label .label-text {
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
-      background: linear-gradient(135deg, #2d2a3a 0%, #5a5568 100%);  /* 深色，似透過字見到後面 */
-    }
+/* 橫條：由左至右、斜、白底鏤空字 */
+.card.coming-soon .coming-soon-label {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+  padding: 0.5rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.55);
+}
 
     .card-img {
       aspect-ratio: 4 / 2.6;
