@@ -63,8 +63,9 @@
       .cards {
         grid-template-columns: repeat(5, 1fr);
         gap: 1rem;
-      }
-    }
+    grid-auto-rows: minmax(320px, auto);  /* 加呢行：卡最低 320px 高 */
+  }
+}
 
     .card {
       display: flex;
