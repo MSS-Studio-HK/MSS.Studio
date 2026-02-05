@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to the 'be' Ecosystem</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #f8f7fc 0%, #f0eef5 100%);
+      padding: 2rem 1rem 3rem;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .lang-switch {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 20;
+    }
+    .lang-switch a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      font-size: 0.875rem;
+      color: #444;
+    }
+    .lang-switch .icon { font-size: 1rem; }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    header h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      color: #2d2a3a;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1rem;
+      color: #6b6578;
+      font-weight: 400;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 900px) {
+      .cards {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background: #fff;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+
+    .card-img {
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .card-img span {
+      font-size: 2.5rem;
+      opacity: 0.9;
+    }
+    .card-body { padding: 1.25rem 1rem; flex: 1; display: flex; flex-direction: column; }
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .card-desc {
+      font-size: 0.8125rem;
+      color: #555;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+    .card .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .card .btn:hover { opacity: 0.9; }
+
+    /* Same color scheme as Chinese page */
+    .card:nth-child(1) .card-img { background: linear-gradient(180deg, #1e3a5f 0%, #c9a227 100%); }
+    .card:nth-child(1) .card-img span { color: #fff; }
+    .card:nth-child(1) h2 { color: #1e3a5f; }
+    .card:nth-child(1) .btn { background: #c9a227; color: #1a1a1a; }
+
+    .card:nth-child(2) .card-img { background: linear-gradient(180deg, #e8e0f0 0%, #d4c4e8 100%); }
+    .card:nth-child(2) .card-img span { color: #5a4a6a; }
+    .card:nth-child(2) h2 { color: #5a4a6a; }
+    .card:nth-child(2) .btn { background: #b8a0c8; color: #2d2a3a; }
+
+    .card:nth-child(3) .card-img { background: linear-gradient(180deg, #fce4ec 0%, #f5c6d6 100%); }
+    .card:nth-child(3) .card-img span { color: #8b4a5c; }
+    .card:nth-child(3) h2 { color: #8b4a5c; }
+    .card:nth-child(3) .btn { background: #e8a8b8; color: #2d2a3a; }
+
+    .card:nth-child(4) .card-img { background: linear-gradient(180deg, #d4edf0 0%, #a8d8e0 100%); }
+    .card:nth-child(4) .card-img span { color: #2d6a73; }
+    .card:nth-child(4) h2 { color: #2d6a73; }
+    .card:nth-child(4) .btn { background: #7ec8d4; color: #1a2a2e; }
+
+    .card:nth-child(5) .card-img { background: linear-gradient(180deg, #fff0e0 0%, #ffd9a8 100%); }
+    .card:nth-child(5) .card-img span { color: #b85c1a; }
+    .card:nth-child(5) h2 { color: #b85c1a; }
+    .card:nth-child(5) .btn { background: #f0b060; color: #2d2a1a; }
+  </style>
+</head>
+<body>
+  <!-- Language switch: back to Chinese main page -->
+  <div class="lang-switch">
+    <a href="index.html">
+      <span class="icon" aria-hidden="true">🌐</span>
+      <span class="text">中</span>
+    </a>
+  </div>
+
+  <div class="page">
+    <header>
+      <h1>Welcome to the “be” Ecosystem</h1>
+      <p>Select your destination to begin your journey.</p>
+    </header>
+
+    <main class="cards">
+      <a href="#" class="card" aria-label="Enter beEXPO">
+        <div class="card-img"><span aria-hidden="true">🌙</span></div>
+        <div class="card-body">
+          <h2>beEXPO</h2>
+          <p class="card-desc">An interactive hub for global exhibitions and events.</p>
+          <span class="btn">Enter site →</span>
+        </div>
+      </a>
+      <a href="#" class="card" aria-label="Enter SiLuna">
+        <div class="card-img"><span aria-hidden="true">✨</span></div>
+        <div class="card-body">
+          <h2>SiLuna</h2>
+          <p class="card-desc">Your AI guide to culture, art, and style.</p>
+          <span class="btn">Enter site →</span>
+        </div>
+      </a>
+      <a href="#" class="card" aria-label="Enter beUS">
+        <div class="card-img"><span aria-hidden="true">💒</span></div>
+        <div class="card-body">
+          <h2>beUS</h2>
+          <p class="card-desc">An AI wedding planner tailored to your story.</p>
+          <span class="btn">Enter site →</span>
+        </div>
+      </a>
+      <a href="#" class="card" aria-label="Enter bePAMA">
+        <div class="card-img"><span aria-hidden="true">👨‍👩‍👧</span></div>
+        <div class="card-body">
+          <h2>bePAMA</h2>
+          <p class="card-desc">An AI assistant for parenting and family wellness.</p>
+          <span class="btn">Enter site →</span>
+        </div>
+      </a>
+      <a href="#" class="card" aria-label="Enter beCreators">
+        <div class="card-img"><span aria-hidden="true">💡</span></div>
+        <div class="card-body">
+          <h2>beCreators</h2>
+          <p class="card-desc">AI tools and community to power your creativity.</p>
+          <span class="btn">Enter site →</span>
+        </div>
+      </a>
+    </main>
+  </div>
+</body>
+</html>
