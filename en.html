@@ -109,7 +109,7 @@
       top: 22%;
       left: 0;
       right: 0;
-      width: 100%;
+      width: 110%;
       padding: 0.6rem 0.5rem;
       background: rgba(255, 255, 255, 0.92);
       color: rgba(0, 0, 0, 0.45);
@@ -121,7 +121,14 @@
       z-index: 10;
       pointer-events: none;
       transform: rotate(-20deg);
-      text-shadow: 0 1px 0 rgba(200,200,200,0.8);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+      .coming-soon-label .label-text {
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      background: linear-gradient(135deg, #2d2a3a 0%, #5a5568 100%);  /* 深色，似透過字見到後面 */
     }
 
     .card-img {
