@@ -153,6 +153,30 @@
     .card:nth-child(5) .card-img span { color: #b85c1a; }
     .card:nth-child(5) h2 { color: #b85c1a; }
     .card:nth-child(5) .btn { background: #f0b060; color: #2d2a1a; }
+
+    /* 未上線的卡：霧化、不可點、斜字「Coming Soon」 */
+.card.coming-soon {
+  pointer-events: none;
+  cursor: default;
+  position: relative;
+  filter: blur(3px);
+  opacity: 0.75;
+}
+
+.card.coming-soon .coming-soon-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  z-index: 5;
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+}
+    
   </style>
 </head>
 <body>
@@ -195,14 +219,15 @@
           <span class="btn">Enter site →</span>
         </div>
       </a>
-      <a href="#" class="card" aria-label="Enter bePAMA">
-        <div class="card-img"><span aria-hidden="true">👨‍👩‍👧</span></div>
-        <div class="card-body">
-          <h2>bePAMA</h2>
-          <p class="card-desc">An AI assistant for parenting and family wellness.</p>
-          <span class="btn">Enter site →</span>
-        </div>
-      </a>
+<div class="card coming-soon">
+  <span class="coming-soon-label">Coming Soon</span>
+  <div class="card-img">...</div>
+  <div class="card-body">
+    <h2>beEXPO</h2>
+    <p class="card-desc">...</p>
+    <span class="btn">Enter site →</span>
+  </div>
+</div>
       <a href="#" class="card" aria-label="Enter beCreators">
         <div class="card-img"><span aria-hidden="true">💡</span></div>
         <div class="card-body">
